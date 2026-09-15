@@ -148,7 +148,6 @@
             transform: translateY(-2px);
         }
 
-        /* Founder Glowing Card Effect */
         .rank-founder {
             border: 2px solid #ff0055 !important;
             background: linear-gradient(90deg, rgba(255, 0, 85, 0.15), rgba(0, 242, 254, 0.15)) !important;
@@ -269,7 +268,6 @@
             font-weight: bold;
         }
 
-        /* Modal Styles */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -292,7 +290,7 @@
         .modal-content {
             background: #131324;
             width: 90%;
-            max-width: 400px;
+            max-width: 420px;
             border-radius: 16px;
             padding: 22px;
             border: 2px solid var(--accent);
@@ -344,16 +342,24 @@
             flex-direction: column;
             align-items: center;
             background: rgba(255, 255, 255, 0.05);
-            padding: 8px;
+            padding: 8px 6px;
             border-radius: 8px;
-            width: 70px;
+            width: 78px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .tier-icon {
-            width: 28px;
-            height: 28px;
-            margin-bottom: 4px;
+            width: 26px;
+            height: 26px;
+            margin-bottom: 2px;
             image-rendering: pixelated;
+        }
+
+        .tier-name {
+            font-size: 10px;
+            color: var(--text-sub);
+            font-weight: 600;
+            margin-bottom: 2px;
         }
 
         .tier-rank {
@@ -370,6 +376,7 @@
         .ht4 { color: #8888ff; }
         .lt4 { color: #777777; }
         .ht5 { color: #555555; }
+        .lt5 { color: #444444; }
         .n-a { color: var(--text-sub); }
     </style>
 </head>
@@ -410,24 +417,22 @@
     </div>
 
     <script>
-        const itemCDN = "https://cdn.jsdelivr.net/gh/InventivetalentDev/minecraft-assets@1.20.2/assets/minecraft/textures/item/";
+        const itemCDN = "https://cdn.jsdelivr.net/gh/InventivetalentDev/minecraft-assets@1.21/assets/minecraft/textures/item/";
         const modes = [
             { id: "Crystal", icon: itemCDN + "end_crystal.png" },
             { id: "SMP", icon: itemCDN + "ender_pearl.png" },
             { id: "NethPot", icon: itemCDN + "netherite_helmet.png" },
             { id: "UHC", icon: itemCDN + "golden_apple.png" },
-            { id: "Mace", icon: itemCDN + "trident.png" },
+            { id: "Mace", icon: itemCDN + "mace.png" },
             { id: "Sword", icon: itemCDN + "diamond_sword.png" },
             { id: "Pot", icon: itemCDN + "splash_potion.png" },
-            { id: "Axe", icon: itemCDN + "diamond_axe.png" },
-            { id: "Vanilla", icon: itemCDN + "apple.png" }
+            { id: "Axe", icon: itemCDN + "diamond_axe.png" }
         ];
 
         let activeRegion = 'ALL';
         const focusedAvatar = "./1000070920.png";
         const earltzyAvatar = "./1000071027.png";
 
-        // MCTiers Title Calculator
         function getMCTiersTitle(score) {
             if (score >= 400) return `Combat Grandmaster (${score} pts)`;
             if (score >= 250) return `Combat Master (${score} pts)`;
@@ -439,25 +444,23 @@
             return `Unranked (${score} pts)`;
         }
 
-        // Players Database
         const players = [
-            { isFounder: true, name: "C_H_A_M_B_E_R", region: "AS", score: 150, tiers: ["HT1"] },
-            { name: "kingofhells", region: "AS", score: 100, tiers: ["N/A", "LT4", "LT4"] },
-            { name: "QaxSyndicate", region: "AS", score: 95, tiers: ["LT2"] },
-            { name: "Focused", region: "AS", score: 75, customAvatar: focusedAvatar, tiers: ["LT3"] },
-            { name: "Kuraii_", region: "AS", score: 75, tiers: ["N/A", "N/A", "N/A", "N/A", "N/A", "LT3"] },
-            { isTester: true, name: "Earltzyblox", region: "AS", score: 75, customAvatar: earltzyAvatar, tiers: ["LT4", "HT4", "LT3", "LT3", "N/A", "LT3", "LT3"] },
-            { name: "Pangshie", region: "AS", score: 50, tiers: ["HT4"] },
-            { isFounder: true, name: "WynFx", region: "AS", score: 35, tiers: ["LT4", "N/A", "LT4"] },
-            { name: "x1nnstox", region: "AS", score: 35, tiers: ["LT4"] },
-            { name: "vacentii", region: "AS", score: 35, tiers: ["LT4"] },
-            { name: "R31NH4RT", region: "AS", score: 35, tiers: ["LT4"] },
-            { name: "EightNineKen", region: "AS", score: 20, tiers: ["N/A", "N/A", "HT5"] },
-            { name: "Cox", region: "AS", score: 10, tiers: ["LT5"] },
-            { name: "AblazeShadow", region: "AS", score: 10, tiers: ["LT5"] }
+            { isFounder: true, name: "C_H_A_M_B_E_R", region: "AS", score: 6, tiers: ["HT5", "HT5", "HT5"] },
+            { name: "kingofhells", region: "AS", score: 10, tiers: ["HT4", "LT4", "LT4"] },
+            { name: "QaxSyndicate", region: "AS", score: 20, tiers: ["LT2"] },
+            { name: "Focused", region: "AS", score: 4, customAvatar: focusedAvatar, tiers: ["HT4"] },
+            { name: "Kuraii_", region: "AS", score: 12, tiers: ["N/A", "LT3", "LT3"] },
+            { isTester: true, name: "Earltzyblox", region: "AS", score: 25, customAvatar: earltzyAvatar, tiers: ["LT4", "HT4", "LT3", "LT3", "N/A", "LT3", "LT3"] },
+            { name: "Pangshie", region: "AS", score: 4, tiers: ["HT4"] },
+            { isFounder: true, name: "WynFx", region: "AS", score: 9, tiers: ["N/A", "LT4", "LT4", "N/A", "LT4"] },
+            { name: "x1nnstox", region: "AS", score: 3, tiers: ["LT4"] },
+            { name: "vacentii", region: "AS", score: 3, tiers: ["LT4"] },
+            { name: "R31NH4RT", region: "AS", score: 3, tiers: ["LT4"] },
+            { name: "EightNineKen", region: "AS", score: 2, tiers: ["N/A", "N/A", "HT5"] },
+            { name: "Cox", region: "AS", score: 1, tiers: ["LT5"] },
+            { name: "AblazeShadow", region: "AS", score: 1, tiers: ["LT5"] }
         ];
 
-        // Ensure title is calculated dynamically
         players.forEach(p => {
             if (!p.title) {
                 p.title = getMCTiersTitle(p.score);
@@ -469,7 +472,6 @@
             const query = document.getElementById("searchInput").value.toLowerCase();
             container.innerHTML = "";
 
-            // Strict Point Sorting: Highest points top, lowest bottom
             players.sort((a, b) => b.score - a.score);
 
             const filteredPlayers = players.filter(p => {
@@ -546,6 +548,7 @@
                 tierGrid.innerHTML += `
                     <div class="tier-item">
                         <img class="tier-icon" src="${mode.icon}" alt="${mode.id}" title="${mode.id}">
+                        <div class="tier-name">${mode.id}</div>
                         <div class="tier-rank ${colorClass}">${tierVal}</div>
                     </div>
                 `;
